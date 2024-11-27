@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Folback Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./checkfolback.js"></script>
+    <!-- add favicon -->
+    <link rel="icon" href="/logo.jpeg" type="image/x-icon" />
+    <!-- add swal fire -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+      body {
+        position: relative;
+      }
+
+body::before {
+        content: "";
+        background-image: url('/logo.jpeg');
+        background-size: 70%; /* This will make the image cover the entire background */
+        background-repeat: no-repeat; /* This will prevent the image from repeating */
+        background-position: center; /* This will center the image */
+        opacity: 0.1; /* Adjust the transparency level */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Ensure the pseudo-element is behind the content */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mx-auto">
+      <div class="flex justify-center items-center h-screen">
+        <div class="w-full max-w-md">
+          <div class="bg-white p-8 rounded shadow-md">
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Check Follower Back</h1>
+            <p class="text-gray-600 mb-6">Check if someone not follow you back</p>
+            <div>
+              <div class="mb-4">
+                <label for="following" class="block text-gray-800 text-sm font-semibold mb-2">Following JSON File <span class="text-red-500">*</span></label>
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="following" type="file" name="following">
+
+              </div>
+              <div class="mb-4">
+                <label for="followers" class="block text-gray-800 text-sm font-semibold mb-2">Followers JSON File <span class="text-red-500">*</span></label>
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="followers" type="file" name="followers">
+              </div>
+              <button type="button" onclick="checkResult()" class="w-full bg-blue-500 text-white p-3 rounded">Check</button>
+            </div>
+            <div class="mt-4 hidden" id="result">
+              <h2 class="text-xl font-bold text-gray-800 mb-2">Result</h2>
+              <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                <div>
+                  <p class="text-gray-600">Following</p>
+                  <p class="text-gray-800 font-semibold" id="followingCount">0</p>
+                </div>
+                <div>
+                  <p class="text-gray-600">Followers</p>
+                  <p class="text-gray-800 font-semibold" id="followersCount">0</p>
+                </div>
+                <div>
+                  <p class="text-gray-600">Not Follow Back</p>
+                  <p class="text-gray-800 font-semibold" id="notFollowBackCount">0</p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Not Follow Back</h3>
+                <div id="notFollowBackList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </body>
+</html>
